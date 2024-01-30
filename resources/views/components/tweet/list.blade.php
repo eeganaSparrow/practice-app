@@ -10,6 +10,7 @@
             <div>
                 <span class="inline-block px-2 py-1 mb-2 text-xs text-gray-600 bg-gray-100 rounded-full">{{ $tweet->user->name }}</span>
                 <p class="text-gray-600">{!! nl2br(e($tweet->content)) !!}</p>
+                <x-tweet.images :images="$tweet->images"/>
             </div>
             <div>
                 <x-tweet.options :tweetId="$tweet->id" :userId="$tweet->user_id"></x-tweet.options>

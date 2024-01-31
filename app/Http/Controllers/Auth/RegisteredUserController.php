@@ -48,11 +48,14 @@ class RegisteredUserController extends Controller
 
         Auth::login($newUser);
 
-        $allUser = User::get();
-        foreach($allUser as $user){
-            $mailer->to($user->email)
-            ->send(new NewUserIntroduction($user, $newUser));
+        if(!env('production')){
+            $allUser = User::get();
+            foreach($allUser as $user){
+                $mailer->to($user->email)
+                ->send(new NewUserIntroduction($user, $newUser));
+            }
         }
+
 
         return redirect(RouteServiceProvider::HOME);
     }

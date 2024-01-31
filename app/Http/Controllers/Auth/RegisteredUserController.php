@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($newUser);
 
-        if(!env('production')){
+        if(env('APP_ENV') !== 'production'){
             $allUser = User::get();
             foreach($allUser as $user){
                 $mailer->to($user->email)
@@ -56,8 +56,6 @@ class RegisteredUserController extends Controller
             }
         }
 
-
-        // return redirect(RouteServiceProvider::HOME);
-        return redirect()->route('tweet.index');
+        return redirect(RouteServiceProvider::HOME);
     }
 }

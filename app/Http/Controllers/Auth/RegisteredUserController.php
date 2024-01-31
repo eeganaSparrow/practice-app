@@ -57,6 +57,7 @@ class RegisteredUserController extends Controller
         }
 
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('tweet.index');
     }
 }
